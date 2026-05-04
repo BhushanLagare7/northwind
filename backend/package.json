@@ -1,0 +1,38 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "node dist/index.js",
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@clerk/backend": "^3.2.8",
+    "@clerk/express": "^2.1.0",
+    "@imagekit/nodejs": "^7.4.0",
+    "@sentry/node": "^10.48.0",
+    "@sentry/profiling-node": "^10.48.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.39.3",
+    "express": "^5.2.1",
+    "pg": "^8.13.1",
+    "standardwebhooks": "^1.0.0",
+    "stream-chat": "^8.57.6",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^22.10.10",
+    "@types/pg": "^8.11.10",
+    "drizzle-kit": "^0.30.4",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
