@@ -10,7 +10,7 @@ ENV VITE_API_URL=
 # Public Clerk key (safe to pass as build-arg; it is embedded in client JS anyway)
 ARG VITE_CLERK_PUBLISHABLE_KEY
 ENV VITE_CLERK_PUBLISHABLE_KEY=$VITE_CLERK_PUBLISHABLE_KEY
-RUN npm install --no-audit --no-fund \
+RUN npm install --no-audit --no-fund --legacy-peer-deps \
   && npm run build
 
   # --- Stage 2: compile the API (TypeScript → JavaScript) ---
