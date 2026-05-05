@@ -5,6 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 import "dotenv/config";
+import keepAliveCron from "./lib/cron";
 import { getEnv } from "./lib/env";
 import { clerkWebhookHandler } from "./webhooks/clerk";
 
@@ -21,6 +22,10 @@ app.post("/webhooks/clerk", rawJson, (req, res) => {
 app.use(express.json());
 app.use(cors());
 app.use(clerkMiddleware());
+
+app.get("/health", (_req, res) => {
+  res.json({ ok: true });
+});
 
 const publicDir = path.join(process.cwd(), "public");
 if (fs.existsSync(publicDir)) {
@@ -43,4 +48,7 @@ if (fs.existsSync(publicDir)) {
 
 app.listen(env.PORT, () => {
   console.log(`Server running on port ${env.PORT}`);
+  if (env.NODE_ENV === "production") {
+    keepAliveCron.start();
+  }
 });
