@@ -105,8 +105,7 @@ const envSchema = z.object({
    * Must be a valid UUID format.
    * @example "123e4567-e89b-12d3-a456-426614174000"
    */
-  // TODO: change to `z.string().uuid()`
-  POLAR_CHECKOUT_PRODUCT_ID: z.string(),
+  POLAR_CHECKOUT_PRODUCT_ID: z.string().uuid(),
 
   /**
    * The public API key for Stream (e.g., Stream Chat or Stream Activity Feeds).
