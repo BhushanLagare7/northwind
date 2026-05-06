@@ -80,7 +80,8 @@ if (fs.existsSync(publicDir)) {
 Sentry.setupExpressErrorHandler(app);
 
 /** Global error handler — returns a 500 with an optional Sentry event ID for tracing */
-app.use((_err: unknown, _req: express.Request, res: express.Response) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+app.use((_err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
   const sentryId = (res as express.Response & { sentry?: string }).sentry;
 
   res.status(500).json({
