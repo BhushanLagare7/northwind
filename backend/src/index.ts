@@ -9,6 +9,7 @@ import "dotenv/config";
 import keepAliveCron from "./lib/cron";
 import { getEnv } from "./lib/env";
 import { sentryClerkUserMiddleware } from "./middleware/sentryClerkUser";
+import adminRouter from "./routes/adminRouter";
 import checkoutRouter from "./routes/checkoutRouter";
 import meRouter from "./routes/meRouter";
 import productRouter from "./routes/productRouter";
@@ -49,6 +50,7 @@ app.use("/api/me", meRouter);
 app.use("/api/products", productRouter);
 app.use("/api/stream", streamRouter);
 app.use("/api/checkout", checkoutRouter);
+app.use("/api/admin", adminRouter);
 
 /**
  * Serve static frontend files from the /public directory (if it exists).
@@ -80,15 +82,22 @@ if (fs.existsSync(publicDir)) {
 Sentry.setupExpressErrorHandler(app);
 
 /** Global error handler — returns a 500 with an optional Sentry event ID for tracing */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-app.use((_err: unknown, _req: express.Request, res: express.Response, _next: express.NextFunction) => {
-  const sentryId = (res as express.Response & { sentry?: string }).sentry;
+app.use(
+  (
+    _err: unknown,
+    _req: express.Request,
+    res: express.Response,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _next: express.NextFunction,
+  ) => {
+    const sentryId = (res as express.Response & { sentry?: string }).sentry;
 
-  res.status(500).json({
-    error: "Internal server error",
-    ...(sentryId !== undefined && { sentryId }),
-  });
-});
+    res.status(500).json({
+      error: "Internal server error",
+      ...(sentryId !== undefined && { sentryId }),
+    });
+  },
+);
 
 app.listen(env.PORT, () => {
   console.log(`Server running on port ${env.PORT}`);
