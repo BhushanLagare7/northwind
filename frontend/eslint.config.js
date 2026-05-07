@@ -44,9 +44,17 @@ export default defineConfig([
         },
       ],
       "simple-import-sort/exports": "error",
+      "react/prop-types": "off",
+    },
+    settings: {
+      react: {
+        version: "detect",
+      },
     },
     extends: [
       js.configs.recommended,
+      reactPlugin.configs.flat.recommended,
+      reactPlugin.configs.flat["jsx-runtime"],
       reactHooks.configs.flat.recommended,
       reactRefresh.configs.vite,
     ],
