@@ -7,6 +7,7 @@ import CartPage from "./pages/CartPage";
 import CheckoutReturnPage from "./pages/CheckoutReturnPage";
 import HomePage from "./pages/HomePage";
 import OrdersPage from "./pages/OrdersPage";
+import ProductDetailPage from "./pages/ProductDetailPage";
 
 function App() {
   const { isLoaded, isSignedIn } = useAuth();
@@ -18,6 +19,8 @@ function App() {
       <Routes>
         <Route element={<HomePage />} path="/" />
         <Route element={<CartPage />} path="/cart" />
+        <Route element={<ProductDetailPage />} path="/product/:slug" />
+
         <Route
           element={isSignedIn ? <OrdersPage /> : <Navigate replace to="/" />}
           path="/orders"
