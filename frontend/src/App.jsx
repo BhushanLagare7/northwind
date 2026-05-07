@@ -3,6 +3,7 @@ import { useAuth } from "@clerk/react";
 
 import Layout from "./components/Layout";
 import PageLoader from "./components/PageLoader";
+import CartPage from "./pages/CartPage";
 import HomePage from "./pages/HomePage";
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <Layout>
       <Routes>
         <Route element={<HomePage />} path="/" />
+        <Route element={<CartPage />} path="/cart" />
       </Routes>
     </Layout>
   );
