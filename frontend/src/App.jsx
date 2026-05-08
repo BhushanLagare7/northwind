@@ -6,7 +6,10 @@ import PageLoader from "./components/PageLoader";
 import CartPage from "./pages/CartPage";
 import CheckoutReturnPage from "./pages/CheckoutReturnPage";
 import HomePage from "./pages/HomePage";
+import OrderChatPage from "./pages/OrderChatPage";
+import OrderDetailPage from "./pages/OrderDetailPage";
 import OrdersPage from "./pages/OrdersPage";
+import OrderSummaryPage from "./pages/OrderSummaryPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 
 function App() {
@@ -26,6 +29,12 @@ function App() {
           path="/orders"
         />
         <Route element={<CheckoutReturnPage />} path="/checkout/return" />
+
+        {/* NESTED ROUTES */}
+        <Route element={<OrderDetailPage />} path="/orders/:id">
+          <Route element={<OrderSummaryPage />} index />
+          <Route element={<OrderChatPage />} path="chat" />
+        </Route>
       </Routes>
     </Layout>
   );
