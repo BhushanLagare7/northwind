@@ -10,6 +10,7 @@ import OrderChatPage from "./pages/OrderChatPage";
 import OrderDetailPage from "./pages/OrderDetailPage";
 import OrdersPage from "./pages/OrdersPage";
 import OrderSummaryPage from "./pages/OrderSummaryPage";
+import OrderVideoPage from "./pages/OrderVideoPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 
 function App() {
@@ -29,6 +30,12 @@ function App() {
           path="/orders"
         />
         <Route element={<CheckoutReturnPage />} path="/checkout/return" />
+        <Route
+          element={
+            isSignedIn ? <OrderVideoPage /> : <Navigate replace to={"/"} />
+          }
+          path="/orders/:id/call"
+        />
 
         {/* NESTED ROUTES */}
         <Route element={<OrderDetailPage />} path="/orders/:id">
