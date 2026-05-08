@@ -3,6 +3,7 @@ import { useAuth } from "@clerk/react";
 
 import Layout from "./components/Layout";
 import PageLoader from "./components/PageLoader";
+import AdminProductsPage from "./pages/AdminProductsPage";
 import CartPage from "./pages/CartPage";
 import CheckoutReturnPage from "./pages/CheckoutReturnPage";
 import HomePage from "./pages/HomePage";
@@ -35,6 +36,13 @@ function App() {
             isSignedIn ? <OrderVideoPage /> : <Navigate replace to={"/"} />
           }
           path="/orders/:id/call"
+        />
+
+        <Route
+          element={
+            isSignedIn ? <AdminProductsPage /> : <Navigate replace to="/" />
+          }
+          path="/admin"
         />
 
         {/* NESTED ROUTES */}
