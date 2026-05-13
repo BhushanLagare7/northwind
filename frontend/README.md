@@ -1,16 +1,52 @@
-# React + Vite
+# Northwind Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> The React application powering the Northwind e-commerce platform.
 
-Currently, two official plugins are available:
+This directory contains the frontend code for Northwind, built with React, Vite, and Tailwind CSS. It connects to the Express backend to provide a seamless user experience for managing products, interacting with orders, and participating in real-time chats and video calls.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Key Technologies
 
-## React Compiler
+- **[React](https://react.dev/)** & **[Vite](https://vitejs.dev/)**: For fast, modern UI development.
+- **[Tailwind CSS](https://tailwindcss.com/)** & **[DaisyUI](https://daisyui.com/)**: For rapid and elegant styling.
+- **[React Router](https://reactrouter.com/)**: For client-side routing.
+- **[TanStack Query](https://tanstack.com/query/latest)**: For powerful asynchronous state management and data fetching.
+- **[Zustand](https://zustand-demo.pmnd.rs/)**: For lightweight global state management.
+- **[Clerk](https://clerk.com/)**: For secure user authentication.
+- **[Stream](https://getstream.io/)**: For real-time chat and video functionality.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+### Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Install the required dependencies using npm:
+
+```bash
+npm install
+```
+
+### Environment Variables
+
+Configure the required environment variables in a `.env` file at the root of the `frontend` directory. Key variables include your Clerk publishable key, Stream credentials, and the backend API URL.
+
+### Development Server
+
+Start the development server with Hot Module Replacement (HMR):
+
+```bash
+npm run dev
+```
+
+> [!TIP]
+> Make sure the backend server is running concurrently to ensure API requests and authentication flows work correctly.
+
+### Build and Lint
+
+To build the application for production:
+```bash
+npm run build
+```
+
+To run the linter and check for issues:
+```bash
+npm run lint
+```
